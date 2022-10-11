@@ -12,10 +12,10 @@ Type your markdown code in the editor & see how it will look like on Github usin
 ## 📦 Packages Used
 
 <div>
-<a href="https://prismjs.com/">
+<a href="https://marked.js.org/">
 <img src="https://img.shields.io/badge/Made%20with-Marked JS-1f425f.svg"/>
 </a>
-<a href="https://marked.js.org/">
+<a href="https://prismjs.com/">
 <img src="https://img.shields.io/badge/Made%20with-Prism JS-1f425f.svg"/>
 </a>
 </div>
