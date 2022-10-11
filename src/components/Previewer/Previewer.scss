@@ -1,0 +1,68 @@
+@import "../../styles/colors.module";
+
+.preview {
+  width: 50%;
+}
+#preview {
+  color: $white;
+  padding: 5px;
+  flex-grow: 1;
+  border: 1px solid transparent;
+  border-radius: 0 0 20px 20px;
+  a {
+    color: $pink;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    border-bottom: 1px solid $white;
+    margin: 10px 0;
+  }
+
+  li ul {
+    padding: 10px;
+  }
+  ul,
+  ol {
+    list-style-position: inside;
+  }
+  ol {
+    margin: 10px 0;
+  }
+  blockquote {
+    border-left: 3px solid $white;
+    padding-left: 5px;
+    margin-left: 25px;
+  }
+  code {
+    overflow-x: scroll;
+  }
+  pre {
+    min-width: 100%;
+  }
+  code,
+  pre {
+    background-color: $pink;
+    color: black;
+  }
+  p {
+    margin: 10px 0;
+  }
+  table {
+    margin: 10px 0;
+  }
+  table,
+  th,
+  td {
+    border: 1px solid;
+    padding: 5px;
+  }
+  img {
+    max-width: 100%;
+    margin: 10px 0;
+  }
+}

@@ -1,0 +1,16 @@
+@import "../../styles/colors.module";
+
+.editor {
+  width: 50%;
+  & textarea {
+    width: 100%;
+    flex-grow: 1;
+    resize: none;
+    outline: none;
+    border: 1px solid transparent;
+    padding: 5px;
+    background-color: transparent;
+    color: $blue;
+    border-radius: 0 0 20px 20px;
+  }
+}
