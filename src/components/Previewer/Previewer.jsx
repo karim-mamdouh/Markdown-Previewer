@@ -1,27 +1,32 @@
-import { faEye } from "@fortawesome/free-solid-svg-icons";
-import { marked } from "marked";
+//React
 import React, { useEffect, useRef } from "react";
-import Wrapper from "../Wrapper/Wrapper";
-import "./Previewer.scss";
+import PropTypes from "prop-types";
+//Libraries
+import { marked } from "marked";
 import Prism from "prismjs";
+//Styling file
+import "./Previewer.scss";
 
-const Previewer = ({ markdown }) => {
+const Previewer = ({ markdown, className }) => {
   const previewRef = useRef();
+  //Setting marked library options
   marked.setOptions({
     breaks: true,
     highlight: function (code) {
       return Prism.highlight(code, Prism.languages.javascript, "javascript");
     },
   });
+  //Refresh html content when variable updates
   useEffect(() => {
     previewRef.current.innerHTML = marked.parse(markdown);
   }, [markdown]);
 
-  return (
-    <Wrapper icon={faEye} title="Preview" className="preview">
-      <div id="preview" ref={previewRef}></div>
-    </Wrapper>
-  );
+  return <div id="preview" ref={previewRef} className={className}></div>;
+};
+//Props validation
+Previewer.propTypes = {
+  markdown: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };
 
 export default Previewer;

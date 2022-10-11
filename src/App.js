@@ -1,22 +1,59 @@
+//React
+import { useEffect, useState } from "react";
+//Icons
+import { faEye, faPen } from "@fortawesome/free-solid-svg-icons";
 //Styling file
-import { useState } from "react";
 import "./App.scss";
 //Components
 import Editor from "./components/Editor/Editor";
 import Previewer from "./components/Previewer/Previewer";
+import Wrapper from "./components/Wrapper/Wrapper";
+import WrapperSmall from "./components/WrapperSmall/WrapperSmall";
 
 function App() {
   const [markdownText, setMarkdownText] = useState(defaultMarkdown);
+  const [windowWidth, setWindowWidth] = useState(getWindowDimensions());
+  //Listner for window resizing
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(getWindowDimensions());
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <>
       <header>Markdown Previewer</header>
       <main>
-        <Editor markdown={markdownText} setMarkdown={setMarkdownText} />
-        <Previewer markdown={markdownText} />
+        {windowWidth.width <= 768 && (
+          <WrapperSmall markdown={markdownText} setMarkdown={setMarkdownText} />
+        )}
+        {windowWidth.width > 768 && (
+          <>
+            {/* Editor */}
+            <Wrapper icon={faPen} title="Editor" className="editor">
+              <Editor markdown={markdownText} setMarkdown={setMarkdownText} />
+            </Wrapper>
+            {/* Previewer */}
+            <Wrapper icon={faEye} title="Preview" className="preview">
+              <Previewer markdown={markdownText} />
+            </Wrapper>
+          </>
+        )}
       </main>
     </>
   );
 }
+
+const getWindowDimensions = () => {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height,
+  };
+};
 
 const defaultMarkdown = `# Welcome to my React Markdown Previewer!
 

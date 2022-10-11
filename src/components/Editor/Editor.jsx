@@ -1,11 +1,13 @@
+//React
 import React from "react";
+import PropTypes from "prop-types";
+//Styling file
 import "./Editor.scss";
-import Wrapper from "../Wrapper/Wrapper";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
 
-const Editor = ({ markdown, setMarkdown }) => {
+const Editor = ({ markdown, setMarkdown, className }) => {
+  const classes = className + " editor";
   return (
-    <Wrapper icon={faPen} title="Editor" className="editor">
+    <div className={classes}>
       <textarea
         id="editor"
         value={markdown}
@@ -13,8 +15,14 @@ const Editor = ({ markdown, setMarkdown }) => {
           setMarkdown(e.target.value);
         }}
       />
-    </Wrapper>
+    </div>
   );
+};
+//Props validation
+Editor.propTypes = {
+  markdown: PropTypes.string.isRequired,
+  setMarkdown: PropTypes.func.isRequired,
+  className: PropTypes.string,
 };
 
 export default Editor;
